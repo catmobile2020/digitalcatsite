@@ -3,13 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Client extends Model
+class Client  extends Authenticatable
 {
+    use Notifiable;
+
     protected $dates=['created_at'];
 
 
-    protected $guarded=['id'];
+    protected $fillable=['name','code','email','city','phone','address','status'];
 
     public function getStatusNameAttribute()
     {
