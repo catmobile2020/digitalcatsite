@@ -49,13 +49,6 @@ class ProfileController extends Controller
      *         format="string",
      *         default="mahmoud",
      *      ),@SWG\Parameter(
-     *         name="code",
-     *         in="formData",
-     *         required=true,
-     *         type="string",
-     *         format="string",
-     *         default="301",
-     *      ),@SWG\Parameter(
      *         name="phone",
      *         in="formData",
      *         required=true,
@@ -70,7 +63,7 @@ class ProfileController extends Controller
      *         format="string",
      *         default="mahmoudnada5050@gmail.com",
      *      ),@SWG\Parameter(
-     *         name="city",
+     *         name="country",
      *         in="formData",
      *         required=true,
      *         type="string",
@@ -83,7 +76,15 @@ class ProfileController extends Controller
      *         type="string",
      *         format="string",
      *         default="10th nasr city",
+     *      ),@SWG\Parameter(
+     *         name="pharmacy_id",
+     *         in="formData",
+     *         required=true,
+     *         type="string",
+     *         format="string",
+     *         default="10th nasr city",
      *      ),
+     *
      *      @SWG\Response(response=200, description="token"),
      *      @SWG\Response(response=400, description="Unauthorized"),
      * )
@@ -94,7 +95,7 @@ class ProfileController extends Controller
     {
         $user = JWTAuth::authenticate();
         $user->update($request->all());
-        return response()->json(['result' =>$user],200);
+        return response()->json(['result' =>$request->all()],200);
     }
 
 

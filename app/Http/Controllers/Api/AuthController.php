@@ -40,13 +40,6 @@ class AuthController extends Controller
      *         format="string",
      *         default="mahmoud",
      *      ),@SWG\Parameter(
-     *         name="code",
-     *         in="formData",
-     *         required=true,
-     *         type="string",
-     *         format="string",
-     *         default="301",
-     *      ),@SWG\Parameter(
      *         name="phone",
      *         in="formData",
      *         required=true,
@@ -61,7 +54,7 @@ class AuthController extends Controller
      *         format="string",
      *         default="mahmoudnada5050@gmail.com",
      *      ),@SWG\Parameter(
-     *         name="city",
+     *         name="country",
      *         in="formData",
      *         required=true,
      *         type="string",
@@ -69,6 +62,13 @@ class AuthController extends Controller
      *         default="cairo",
      *      ),@SWG\Parameter(
      *         name="address",
+     *         in="formData",
+     *         required=true,
+     *         type="string",
+     *         format="string",
+     *         default="10th nasr city",
+     *      ),@SWG\Parameter(
+     *         name="pharmacy_id",
      *         in="formData",
      *         required=true,
      *         type="string",
@@ -90,13 +90,14 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        $client = Client::create([
+        $client = User::create([
             'name' => $request->name,
-            'code' => $request->code,
-            'email' => $request->email,
-            'city' => $request->city,
+            'username' => $request->phone,
             'phone' => $request->phone,
+            'email' => $request->email,
+            'country' => $request->country,
             'address' => $request->address,
+            'pharmacy_id' => $request->pharmacy_id,
             'status' => 0,
             'password' => bcrypt($request->password),
         ]);

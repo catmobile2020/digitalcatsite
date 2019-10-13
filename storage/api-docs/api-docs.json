@@ -22,14 +22,6 @@
                         "default": "mahmoud"
                     },
                     {
-                        "name": "code",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string",
-                        "format": "string",
-                        "default": "301"
-                    },
-                    {
                         "name": "phone",
                         "in": "formData",
                         "required": true,
@@ -46,7 +38,7 @@
                         "default": "mahmoudnada5050@gmail.com"
                     },
                     {
-                        "name": "city",
+                        "name": "country",
                         "in": "formData",
                         "required": true,
                         "type": "string",
@@ -55,6 +47,14 @@
                     },
                     {
                         "name": "address",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "10th nasr city"
+                    },
+                    {
+                        "name": "pharmacy_id",
                         "in": "formData",
                         "required": true,
                         "type": "string",
@@ -163,6 +163,51 @@
                 ]
             }
         },
+        "/pharmacies": {
+            "get": {
+                "tags": [
+                    "pharmacies"
+                ],
+                "summary": "Get my orders Product",
+                "responses": {
+                    "200": {
+                        "description": "objects"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/pharmacies/{pharmacy}": {
+            "get": {
+                "tags": [
+                    "pharmacies"
+                ],
+                "summary": "Get single pharmacy",
+                "parameters": [
+                    {
+                        "name": "pharmacy",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "object"
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
         "/account/me": {
             "get": {
                 "tags": [
@@ -197,14 +242,6 @@
                         "default": "mahmoud"
                     },
                     {
-                        "name": "code",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string",
-                        "format": "string",
-                        "default": "301"
-                    },
-                    {
                         "name": "phone",
                         "in": "formData",
                         "required": true,
@@ -221,7 +258,7 @@
                         "default": "mahmoudnada5050@gmail.com"
                     },
                     {
-                        "name": "city",
+                        "name": "country",
                         "in": "formData",
                         "required": true,
                         "type": "string",
@@ -230,6 +267,14 @@
                     },
                     {
                         "name": "address",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "10th nasr city"
+                    },
+                    {
+                        "name": "pharmacy_id",
                         "in": "formData",
                         "required": true,
                         "type": "string",

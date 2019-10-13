@@ -5,6 +5,7 @@ namespace App\Http\Requests\Api;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class RegisterRequest extends FormRequest
 {
@@ -27,16 +28,16 @@ class RegisterRequest extends FormRequest
     {
         $roles = [
             'name' => 'required',
-            'code' => 'required',
-            'city' => 'required',
+            'country' => 'required',
             'address' => 'required',
+            'pharmacy_id' => 'required',
         ];
 
         if ($this->routeIs('api.account.update'))
         {
-            $roles +=['status' => "required"];
-            $roles +=['phone' => "required|unique:clients,phone,{$this->client->id}"];
-            $roles +=['email' => "required|unique:clients,email,{$this->client->id}"];
+            $user = JWTAuth::authenticate();
+            $roles +=['phone' => "required|unique:clients,phone,{$user->id}"];
+            $roles +=['email' => "required|unique:clients,email,{$user->id}"];
         }
 
         if ($this->routeIs('api.register'))
