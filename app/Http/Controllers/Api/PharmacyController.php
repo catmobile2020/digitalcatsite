@@ -13,7 +13,7 @@ class PharmacyController extends Controller
      * @SWG\Get(
      *      tags={"pharmacies"},
      *      path="/pharmacies",
-     *      summary="Get my orders Product",
+     *      summary="Get pharmacies",
      *      security={
      *          {"jwt": {}}
      *      },

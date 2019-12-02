@@ -34,7 +34,7 @@ class ProfileController extends Controller
 
     /**
      *
-     * @SWG\post(
+         * @SWG\post(
      *      tags={"account"},
      *      path="/account/update",
      *      summary="update My Account",
